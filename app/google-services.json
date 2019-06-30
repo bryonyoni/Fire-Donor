@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "231342574222",
+    "firebase_url": "https://firedonorapp.firebaseio.com",
+    "project_id": "firedonorapp",
+    "storage_bucket": "firedonorapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:231342574222:android:472aec7acf3125bb",
+        "android_client_info": {
+          "package_name": "com.bry.firedonor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "231342574222-igns4derpbb5rpg1sdougn3lqha3tuth.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBo47oPm7cRg9XD0LE-z-MAyp7Hdtbvuaw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "231342574222-igns4derpbb5rpg1sdougn3lqha3tuth.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
