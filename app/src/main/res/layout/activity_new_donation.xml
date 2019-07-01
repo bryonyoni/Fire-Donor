@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.NewDonationActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <!--Contains the title bar part-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:id="@+id/backButton"
+                        android:layout_width="30dp"
+                        android:background="@drawable/ic_action_back"
+                        android:layout_gravity="center_vertical"
+                        android:layout_height="30dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/new_donation"
+                        android:textColor="@color/titlecolor"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <!--Contains the individual steps to be taken.-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <!--Beginning part-->
+                <LinearLayout
+                    android:id="@+id/beginLinearLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="00dp"
+                    android:visibility="visible"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/let_s_set_up_your_new_donation"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/begin"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Name part-->
+                <LinearLayout
+                    android:id="@+id/itemNameLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="400dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/describe_the_name_and_weight_of_the_food_item_being_donated"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/nameAndMassEditText"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:inputType="textAutoComplete"
+                        android:background="@android:color/white"
+                        android:textColorHint="@color/hintcolor"
+                        android:hint="@string/_25_kilos_of_something"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/Continue"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Choose photo part-->
+                <LinearLayout
+                    android:id="@+id/itemImagesLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="400dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/next_some_photos_or_pictures_of_the_donated_items"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <android.support.v7.widget.RecyclerView
+                        android:layout_width="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="match_parent"/>
+
+                    <LinearLayout
+                        android:id="@+id/addAPhotoLinearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:layout_width="50dp"
+                            android:src="@drawable/ic_action_add_photo"
+                            android:background="@android:color/darker_gray"
+                            android:layout_height="50dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="17sp"
+                            android:text="@string/add_a_photo"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/takeAPhotoLinearLayout"
+                        android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:layout_width="50dp"
+                            android:src="@drawable/ic_action_take_photo"
+                            android:background="@android:color/darker_gray"
+                            android:layout_height="50dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp"
+                            android:textSize="17sp"
+                            android:text="@string/take_a_photo"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/Continue"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Details part-->
+                <LinearLayout
+                    android:id="@+id/itemDetailsLinearLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="400dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/next_details_of_the_donation_be_as_descriptive_as_you_like"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <EditText
+                        android:id="@+id/itemDetailsEditText"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:inputType="textMultiLine"
+                        android:lines="4"
+                        android:gravity="top"
+                        android:background="@android:color/white"
+                        android:textColorHint="@color/hintcolor"
+                        android:hint="@string/details_come_here"
+                        android:padding="10dp"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_marginTop="20dp"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/Continue"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Map Location part-->
+                <LinearLayout
+                    android:id="@+id/openMapLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="400dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/next_the_location_open_the_map_and_set_the_location_where_your_donated_items_are_stored"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/open_map"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Confirm details part-->
+                <LinearLayout
+                    android:id="@+id/confirmDetailsLinearLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="400dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/confirm_all_the_details_are_right_before_finishing"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content">
+
+                        <android.support.v7.widget.CardView
+                            android:layout_width="110dp"
+                            app:cardCornerRadius="14dp"
+                            android:layout_height="110dp">
+
+                            <ImageView
+                                android:id="@+id/mainImage"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+                        </android.support.v7.widget.CardView>
+
+                        <android.support.v7.widget.RecyclerView
+                            android:layout_width="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+
+                    <!--Location set data confirmation-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/location_set"
+                        android:textColor="@color/titlecolor"
+                        android:textSize="17sp"
+                        android:layout_marginStart="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/confirmLocationTextView"
+                        android:layout_width="wrap_content"
+                        android:text="@string/location_area"
+                        android:layout_marginStart="30dp"
+                        android:layout_height="wrap_content" />
+
+
+                    <!--Details set data confirmation-->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/set_details"
+                        android:layout_marginTop="20dp"
+                        android:textColor="@color/titlecolor"
+                        android:textSize="17sp"
+                        android:layout_marginStart="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/donationDetailsTextView"
+                        android:layout_width="wrap_content"
+                        android:text="@string/location_details_blah_blah_blah"
+                        android:layout_marginStart="30dp"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/begin"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+                <!--Finished up part-->
+                <LinearLayout
+                    android:id="@+id/uploadedLinearLayout"
+                    android:layout_width="match_parent"
+                    android:translationX="400dp"
+                    android:visibility="gone"
+                    android:layout_centerVertical="true"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/your_item_has_been_listed_it_shouldn_t_be_long_before_requests_come_in"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginRight="20dp"
+                        android:layout_height="wrap_content" />
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <Button
+                            android:layout_width="wrap_content"
+                            android:text="@string/finish"
+                            android:layout_alignParentEnd="true"
+                            android:background="@null"
+                            android:layout_marginEnd="20dp"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </RelativeLayout>
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -21,4 +21,23 @@
     <string name="have_an_account_sign_in_here">Have an account? Sign in here.</string>
     <string name="failed_sign_in">That didn\'t work, check your credentials and retry.</string>
     <string name="begin">Begin.</string>
+    <string name="new_donation">New Donation.</string>
+    <string name="let_s_set_up_your_new_donation">Let\'s set up your new donation.</string>
+    <string name="describe_the_name_and_weight_of_the_food_item_being_donated">Describe the name and weight of the food item being donated.</string>
+    <string name="_25_kilos_of_something">25 Kilos of Something</string>
+    <string name="next_some_photos_or_pictures_of_the_donated_items">Next, some photos or pictures of the donated items.</string>
+    <string name="add_a_photo">Add a photo.</string>
+    <string name="take_a_photo">Take a Photo.</string>
+    <string name="Continue">Continue.</string>
+    <string name="next_details_of_the_donation_be_as_descriptive_as_you_like">Next, details of the donation. Be as descriptive as you like.</string>
+    <string name="details_come_here">Details come here…</string>
+    <string name="next_the_location_open_the_map_and_set_the_location_where_your_donated_items_are_stored">Next, the location. Open the map, and set the location where your donated items are stored.</string>
+    <string name="open_map">OPEN MAP.</string>
+    <string name="confirm_all_the_details_are_right_before_finishing">Confirm all the details are right before finishing.</string>
+    <string name="location_area">Location area:</string>
+    <string name="location_set">Location Set.</string>
+    <string name="set_details">Set Details.</string>
+    <string name="location_details_blah_blah_blah">Location details blah blah blah...</string>
+    <string name="your_item_has_been_listed_it_shouldn_t_be_long_before_requests_come_in">Your item has been listed! It shouldn\'t be long before requests come in.</string>
+
 </resources>
