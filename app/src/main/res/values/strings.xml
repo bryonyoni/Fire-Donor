@@ -28,7 +28,7 @@
     <string name="next_some_photos_or_pictures_of_the_donated_items">Next, some photos or pictures of the donated items.</string>
     <string name="add_a_photo">Add a photo.</string>
     <string name="take_a_photo">Take a Photo.</string>
-    <string name="Continue">Continue.</string>
+    <string name="Continue">CONTINUE.</string>
     <string name="next_details_of_the_donation_be_as_descriptive_as_you_like">Next, details of the donation. Be as descriptive as you like.</string>
     <string name="details_come_here">Details come here…</string>
     <string name="next_the_location_open_the_map_and_set_the_location_where_your_donated_items_are_stored">Next, the location. Open the map, and set the location where your donated items are stored.</string>
@@ -39,5 +39,9 @@
     <string name="set_details">Set Details.</string>
     <string name="location_details_blah_blah_blah">Location details blah blah blah...</string>
     <string name="your_item_has_been_listed_it_shouldn_t_be_long_before_requests_come_in">Your item has been listed! It shouldn\'t be long before requests come in.</string>
+    <string name="upload">Upload.</string>
+    <string name="max_images">Only 5 images or less are needed</string>
+    <string name="details_needed">You need to describe what you\'re donating</string>
+    <string name="add_at_least_one_image">Add at least one image.</string>
 
 </resources>

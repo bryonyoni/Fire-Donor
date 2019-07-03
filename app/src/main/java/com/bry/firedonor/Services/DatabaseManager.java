@@ -1,14 +1,22 @@
 package com.bry.firedonor.Services;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.v4.content.LocalBroadcastManager;
 
 import com.bry.firedonor.Constants;
+import com.bry.firedonor.Models.DonationImage;
+import com.bry.firedonor.Models.DonationItem;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Calendar;
+import java.util.List;
 
 public class DatabaseManager {
     private final String TAG = DatabaseManager.class.getSimpleName();
@@ -26,6 +34,28 @@ public class DatabaseManager {
         usernameRef.child(Constants.USERNAME).setValue(username);
         usernameRef.child(Constants.EMAIL).setValue(email);
         usernameRef.child(Constants.TIME_OF_SIGNUP).setValue(Long.toString(Calendar.getInstance().getTimeInMillis()));
+
+        return this;
+    }
+
+    public DatabaseManager uploadDonationItem(DonationItem item){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        List<DonationImage> images = item.getItemImages();
+        item.setItemImages(null);
+        item.setUploaderId(uid);
+        DatabaseReference donationRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEMS);
+        donationRef.push();
+        String pushRef = donationRef.getKey();
+        item.setItemId(pushRef);
+        donationRef.setValue(item);
+
+        DatabaseReference imagesRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEM_IMAGES);
+        imagesRef.child(pushRef).setValue(images).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                LocalBroadcastManager.getInstance(mContext).sendBroadcast(new Intent(BROADCAST_RECEIVER));
+            }
+        });
 
         return this;
     }

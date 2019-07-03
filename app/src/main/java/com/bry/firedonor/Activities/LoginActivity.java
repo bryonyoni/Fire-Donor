@@ -20,6 +20,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.bry.firedonor.Constants;
 import com.bry.firedonor.R;
 import com.bry.firedonor.Services.Utils;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -304,7 +305,7 @@ public class LoginActivity extends AppCompatActivity {
     private void showLoadingScreen(){
         isShowingSpinner = true;
         progressBarRelativeLayout.setVisibility(View.VISIBLE);
-        loginLinearLayout.setAlpha(0.3f);
+        loginLinearLayout.setAlpha(Constants.LOADING_SCREEN_BACKGROUND_ALPHA);
     }
 
     private void hideLoadingScreens(){

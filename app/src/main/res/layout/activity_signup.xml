@@ -218,6 +218,7 @@
         </LinearLayout>
 
 
+        <!--Progress bar layout, contains the progressbar shown while loading-->
         <RelativeLayout
             android:id="@+id/progressBarRelativeLayout"
             android:visibility="gone"
@@ -232,6 +233,7 @@
                 android:layout_height="60dp"/>
 
         </RelativeLayout>
+
     </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>
