@@ -1,24 +1,34 @@
 package com.bry.firedonor.Activities;
 
+import android.Manifest;
 import android.animation.Animator;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.location.Location;
+import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -27,6 +37,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bry.firedonor.Adapters.ConfirmImageAdapter;
 import com.bry.firedonor.Adapters.SelectedImageAdapter;
@@ -37,6 +48,24 @@ import com.bry.firedonor.Models.SetLocation;
 import com.bry.firedonor.R;
 import com.bry.firedonor.Services.DatabaseManager;
 import com.bry.firedonor.Services.Utils;
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.PendingResult;
+import com.google.android.gms.common.api.Status;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.location.places.PlaceLikelihoodBuffer;
+import com.google.android.gms.location.places.Places;
+import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
+import com.google.android.gms.location.places.ui.PlaceSelectionListener;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
@@ -45,7 +74,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class NewDonationActivity extends AppCompatActivity {
+public class NewDonationActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener
+        ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener{
     private final String TAG = NewDonationActivity.class.getSimpleName();
     private Context mContext;
 
@@ -54,7 +84,7 @@ public class NewDonationActivity extends AppCompatActivity {
     private boolean isShowingSpinner = false;
 
     @Bind(R.id.backButton) ImageButton backButton;
-    @Bind(R.id.beginLinearLayout) Button beginLinearLayout;
+    @Bind(R.id.beginLinearLayout) LinearLayout beginLinearLayout;
     @Bind(R.id.beginButton) Button beginButton;
     private boolean isAtBeginningPart = true;
 
@@ -85,10 +115,25 @@ public class NewDonationActivity extends AppCompatActivity {
     private boolean isAtItemDetailsPart = false;
 
     @Bind(R.id.openMapLayout) LinearLayout openMapLayout;
-    @Bind(R.id.setLocationBackButton) ImageButton setLocationBackButton;
+    @Bind(R.id.setLocationBackButton) ImageView setLocationBackButton;
     @Bind(R.id.setLocationContinueButton) Button setLocationContinueButton;
+    @Bind(R.id.setLocationText) TextView setLocationText;
     private SetLocation setLocation;
     private boolean isAtSetLocationPart = false;
+    private GoogleMap map;
+    private double CBD_LAT = -1.2805;
+    private double CBD_LONG = 36.8163;
+    private LatLng CBD = new LatLng(CBD_LAT, CBD_LONG);
+    private int ZOOM = 15;
+    private Marker mySetMarker;
+    private final int REQUESTCODE = 3301;
+    private GoogleApiClient mGoogleApiClient;
+    MapFragment mapFragment;
+    PlaceAutocompleteFragment autocompleteFragment;
+    @Bind(R.id.mapRelativeLayout) RelativeLayout mapRelativeLayout;
+    @Bind(R.id.mapContainer) CardView mapContainer;
+    @Bind(R.id.setLocationButton) Button setLocationButton;
+    private boolean isMapOpen = false;
 
     @Bind(R.id.confirmDetailsLinearLayout) LinearLayout confirmDetailsLinearLayout;
     @Bind(R.id.confirmMainImage) ImageView confirmMainImage;
@@ -118,7 +163,10 @@ public class NewDonationActivity extends AppCompatActivity {
         mContext = getApplicationContext();
 
         setBeginningPart();
+        mapFragment = (MapFragment)getFragmentManager().findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
     }
+
 
     private void setBeginningPart() {
         beginLinearLayout.setVisibility(View.VISIBLE);
@@ -568,8 +616,15 @@ public class NewDonationActivity extends AppCompatActivity {
 
     private void setLocationPart(){
         isAtSetLocationPart = true;
-        if(setLocation!=null) setLocationContinueButton.setText(getResources().getString(R.string.Continue));
-        else setLocationContinueButton.setText(getResources().getString(R.string.open_map));
+        if(setLocation!=null){
+            setLocationContinueButton.setText(getResources().getString(R.string.Continue));
+            setLocationText.setText(setLocation.getAreaDescription());
+        }
+        else{
+            setLocationContinueButton.setText(getResources().getString(R.string.open_map));
+            setLocationText.setText("");
+        }
+        openMapLayout.setVisibility(View.VISIBLE);
         openMapLayout.animate().alpha(1f).translationX(0).setInterpolator(new LinearOutSlowInInterpolator()).setDuration(mAnimationDuration)
                 .setListener(new Animator.AnimatorListener() {
                     @Override
@@ -665,14 +720,193 @@ public class NewDonationActivity extends AppCompatActivity {
     }
 
     private void openMapToSetLocation(){
-        //add this when location is set
-//        if(setLocation!=null) setLocationContinueButton.setText(getResources().getString(R.string.Continue));
-//        else setLocationContinueButton.setText(getResources().getString(R.string.open_map));
+        mapRelativeLayout.setVisibility(View.VISIBLE);
+        mapContainer.animate().alpha(1f).translationY(0).scaleX(1).scaleY(1).setDuration(mAnimationDuration)
+                .setInterpolator(new LinearOutSlowInInterpolator()).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
 
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mapContainer.setAlpha(1f);
+                mapContainer.setTranslationY(0);
+                mapContainer.setScaleX(1);
+                mapContainer.setScaleY(1);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        }).start();
+
+        setLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(setLocation!=null){
+                    closeMap();
+                }else Toast.makeText(mContext,getResources().getString(R.string.set_the_location_of_the_donated_items),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+    private void closeMap(){
+        if(setLocation!=null){
+            setLocationContinueButton.setText(getResources().getString(R.string.Continue));
+            setLocationText.setText(setLocation.getAreaDescription());
+        }
+        else setLocationContinueButton.setText(getResources().getString(R.string.open_map));
+
+        mapContainer.animate().alpha(0f).translationY(Utils.dpToPx(100)).scaleX(0.9f).scaleY(0.9f).setDuration(mAnimationDuration)
+                .setInterpolator(new LinearOutSlowInInterpolator()).setListener(new Animator.AnimatorListener() {
+            @Override
+            public void onAnimationStart(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationEnd(Animator animation) {
+                mapContainer.setAlpha(0f);
+                mapContainer.setTranslationY(Utils.dpToPx(100));
+                mapContainer.setScaleX(0.9f);
+                mapContainer.setScaleY(0.9f);
+                mapRelativeLayout.setVisibility(View.GONE);
+            }
+
+            @Override
+            public void onAnimationCancel(Animator animation) {
+
+            }
+
+            @Override
+            public void onAnimationRepeat(Animator animation) {
+
+            }
+        }).start();
+    }
+
+    @Override
+    public boolean onMarkerClick(Marker marker) {
+        marker.remove();
+        return false;
+    }
+
+    @Override
+    public boolean onMyLocationButtonClick() {
+        LocationManager lm = (LocationManager)mContext.getSystemService(Context.LOCATION_SERVICE);
+        boolean gps_enabled = false;
+        try {
+            gps_enabled = lm.isProviderEnabled(LocationManager.GPS_PROVIDER);
+        } catch(Exception ex) {}
+
+        if(!gps_enabled) {
+            Toast.makeText(mContext,"Please turn on your GPS-Location.",Toast.LENGTH_SHORT).show();
+        }
+        return false;
+    }
+
+    @Override
+    public void onMyLocationClick(@NonNull Location location) {
+        if(mySetMarker!=null)mySetMarker.remove();
+        mySetMarker = map.addMarker(new MarkerOptions().position(new LatLng(location.getLatitude(),location.getLongitude())).draggable(true));
+        setLocation = new SetLocation(location.getLatitude(),location.getLongitude());
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        googleMap.setIndoorEnabled(false);
+        googleMap.setBuildingsEnabled(false);
+        googleMap.setOnMarkerClickListener(this);
+        googleMap.animateCamera(CameraUpdateFactory.newLatLngZoom(CBD, ZOOM));
+
+        googleMap.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
+            @Override
+            public void onMapClick(LatLng latLng) {
+                if(mySetMarker!=null)mySetMarker.remove();
+                mySetMarker = map.addMarker(new MarkerOptions().position(latLng).draggable(true));
+                setLocation = new SetLocation(latLng);
+            }
+        });
+
+        googleMap.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
+            @Override
+            public void onMarkerDragStart(Marker arg0) {
+            }
+
+            @Override
+            public void onMarkerDragEnd(Marker arg0) {
+                map.animateCamera(CameraUpdateFactory.newLatLng(arg0.getPosition()));
+            }
+
+            @Override
+            public void onMarkerDrag(Marker arg0) {
+            }
+        });
+
+        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(NewDonationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUESTCODE);
+        }else{
+            map.setMyLocationEnabled(true);
+            map.setOnMyLocationButtonClickListener(this);
+            map.setOnMyLocationClickListener(this);
+        }
+
+        LatLng botBnd = new LatLng(-4.716667, 27.433333);
+        LatLng topBnd = new LatLng(4.883333, 41.8583834826426);
+        autocompleteFragment = (PlaceAutocompleteFragment) getFragmentManager().findFragmentById(R.id.place_autocomplete_fragment);
+        autocompleteFragment.setBoundsBias(new LatLngBounds(botBnd,topBnd));
+        autocompleteFragment.setOnPlaceSelectedListener(new PlaceSelectionListener() {
+            @Override
+            public void onPlaceSelected(Place place) {
+                Log.i(TAG, "Place: " + place.getName());
+                LatLng searchedPlace = place.getLatLng();
+                if(mySetMarker!=null) mySetMarker.remove();
+
+                mySetMarker = map.addMarker(new MarkerOptions().position(searchedPlace).draggable(true));
+                map.animateCamera(CameraUpdateFactory.newLatLngZoom(searchedPlace, ZOOM));
+
+                setLocation = new SetLocation(searchedPlace);
+                setLocation.setAreaDescription(place.getAddress().toString());
+            }
+
+            @Override
+            public void onError(Status status) {
+                Log.i(TAG, "An error occurred: " + status);
+            }
+        });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUESTCODE) {
+            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                try{
+                    map.setMyLocationEnabled(true);
+                }catch (SecurityException e){
+                    e.printStackTrace();
+                }
+                map.setOnMyLocationButtonClickListener(this);
+                map.setOnMyLocationClickListener(this);
+            }
+        }
+    }
+
+
+
 
     private void setConfirmDetailsPart(){
         isAtConfirmDetailsPart = true;
+        confirmDetailsLinearLayout.setVisibility(View.VISIBLE);
         confirmDetailsLinearLayout.animate().alpha(1f).translationX(0).setInterpolator(new LinearOutSlowInInterpolator()).setDuration(mAnimationDuration)
                 .setListener(new Animator.AnimatorListener() {
                     @Override
@@ -698,8 +932,9 @@ public class NewDonationActivity extends AppCompatActivity {
                     }
                 }).start();
 
-        if(!setLocation.getAreaDescription().equals(""))confirmLocationTextView
-                .setText(String.format("%s%s", getResources().getString(R.string.location_area), setLocation.getAreaDescription()));
+        if(!setLocation.getAreaDescription().equals(""))confirmLocationTextView.setText(setLocation.getAreaDescription());
+        else confirmLocationTextView
+                .setText(getResources().getString(R.string.location_set));
 
         donationDetailsTextView.setText(setItemDetails);
 
@@ -893,7 +1128,8 @@ public class NewDonationActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         if(!isShowingSpinner){
-            if(isAtItemNamePart)nameAndMassBackButton.performClick();
+            if(isMapOpen) closeMap();
+            else if(isAtItemNamePart)nameAndMassBackButton.performClick();
             else if(isAtItemImagesPart) takePhotoBackButton.performClick();
             else if(isAtItemDetailsPart)itemDetailsBackButton.performClick();
             else if(isAtSetLocationPart)setLocationBackButton.performClick();

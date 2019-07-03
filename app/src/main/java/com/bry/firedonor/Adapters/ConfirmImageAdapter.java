@@ -31,7 +31,7 @@ public class ConfirmImageAdapter extends RecyclerView.Adapter<ConfirmImageAdapte
         Context context = viewGroup.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
 
-        View recipeView = inflater.inflate(R.layout.selected_image_item, viewGroup, false);
+        View recipeView = inflater.inflate(R.layout.confirm_selected_image_item, viewGroup, false);
         return new ConfirmImageAdapter.ViewHolder(recipeView);
     }
 
