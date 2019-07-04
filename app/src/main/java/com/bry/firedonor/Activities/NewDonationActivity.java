@@ -67,12 +67,22 @@ import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class NewDonationActivity extends AppCompatActivity implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener
         ,GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMyLocationClickListener{
@@ -721,6 +731,7 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
 
     private void openMapToSetLocation(){
         mapRelativeLayout.setVisibility(View.VISIBLE);
+        isMapOpen = true;
         mapContainer.animate().alpha(1f).translationY(0).scaleX(1).scaleY(1).setDuration(mAnimationDuration)
                 .setInterpolator(new LinearOutSlowInInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
@@ -763,7 +774,7 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
             setLocationText.setText(setLocation.getAreaDescription());
         }
         else setLocationContinueButton.setText(getResources().getString(R.string.open_map));
-
+        isMapOpen = false;
         mapContainer.animate().alpha(0f).translationY(Utils.dpToPx(100)).scaleX(0.9f).scaleY(0.9f).setDuration(mAnimationDuration)
                 .setInterpolator(new LinearOutSlowInInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
@@ -834,6 +845,7 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
                 if(mySetMarker!=null)mySetMarker.remove();
                 mySetMarker = map.addMarker(new MarkerOptions().position(latLng).draggable(true));
                 setLocation = new SetLocation(latLng);
+                loadNearbyPlace(latLng);
             }
         });
 
@@ -1138,6 +1150,48 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
         }else{
             super.onBackPressed();
         }
+    }
+
+    private void loadNearbyPlace(LatLng pos){
+        Log.e(TAG,"Loading nearby place");
+        String url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+pos.latitude+","
+                +pos.longitude+"&radius=2500&type=restaurant&key=AIzaSyBo47oPm7cRg9XD0LE-z-MAyp7Hdtbvuaw";
+
+        String url2 = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-33.8670522,151.1957362" +
+                "&rankby=distance&type=food";
+
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder().url(url).build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(@NonNull Call call,@NonNull IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(@NonNull Call call,@NonNull final Response response) throws IOException {
+                if (!response.isSuccessful()) {
+                    String responseData = response.body().string();
+                    try {
+                        JSONObject json = new JSONObject(responseData);
+                        JSONArray array = json.getJSONArray("results");
+                        if(array.get(0)!=null){
+                            JSONObject obj = (JSONObject)array.get(0);
+                            String vicinity = obj.getString("vicinity");
+                            Log.e(TAG,"vicinity: "+vicinity);
+                        }else{
+                            Log.e(TAG,"no area found");
+                        }
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }else{
+                    Log.e(TAG,"response is not successful: "+response.toString());
+                }
+            }
+        });
+
     }
 
 }

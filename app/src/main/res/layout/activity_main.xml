@@ -7,10 +7,236 @@
     android:layout_height="match_parent"
     tools:context=".Activities.MainActivity">
 
-    <Button
-        android:id="@+id/opppen"
-        android:layout_width="wrap_content"
-        android:text="open"
-        android:layout_height="wrap_content" />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:paddingTop="5dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/dialog_bg"
+                android:layout_height="wrap_content">
+
+                <!--Contains the logo and text title-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:padding="5dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:src="@drawable/firedonor"
+                        android:layout_height="50dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textSize="22sp"
+                        android:layout_gravity="center_vertical"
+                        android:text="@string/fire_donor"
+                        android:textColor="@color/titlecolor"
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <!--Contains the chat and account icon-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:padding="5dp"
+                    android:gravity="end"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <ImageButton
+                        android:layout_width="40dp"
+                        android:src="@drawable/ic_action_feedback"
+                        android:background="@null"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="40dp" />
+
+                    <ImageButton
+                        android:layout_width="40dp"
+                        android:src="@drawable/ic_action_user"
+                        android:background="@null"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="40dp" />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_margin="10dp"
+                android:layout_marginBottom="80dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:visibility="visible"
+            android:background="@drawable/dialog_bg"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+
+            <!--My uploaded donations button-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_action_my_donations"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/my_donations"
+                    android:textSize="11sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <!--New donation button-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_action_new_donations"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/new_donation"
+                    android:textSize="11sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <!--share App button-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_action_share"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Share App."
+                    android:textSize="11sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <!--My Requests Button-->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_action_my_requests"
+                    android:layout_height="30dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/my_requests"
+                    android:textSize="11sp"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <!--Contains the collapsed version of the icons-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:background="@drawable/dialog_bg"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:paddingTop="15dp"
+            android:scaleY="0.6"
+            android:paddingBottom="15dp"
+            android:layout_alignParentBottom="true"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:scaleX="0.6"
+                android:layout_width="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_action_collapsed"
+                android:layout_height="30dp" />
+
+            <ImageView
+                android:scaleX="0.6"
+                android:layout_width="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_action_collapsed"
+                android:layout_height="30dp" />
+
+            <ImageView
+                android:scaleX="0.6"
+                android:layout_width="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_action_collapsed"
+                android:layout_height="30dp" />
+
+            <ImageView
+                android:scaleX="0.6"
+                android:layout_width="30dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="20dp"
+                android:background="@drawable/ic_action_collapsed"
+                android:layout_height="30dp" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </android.support.design.widget.CoordinatorLayout>

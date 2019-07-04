@@ -21,7 +21,6 @@
     <string name="have_an_account_sign_in_here">Have an account? Sign in here.</string>
     <string name="failed_sign_in">That didn\'t work, check your credentials and retry.</string>
     <string name="begin">Begin.</string>
-    <string name="new_donation">New Donation.</string>
     <string name="let_s_set_up_your_new_donation">Let\'s set up your new donation.</string>
     <string name="describe_the_name_and_weight_of_the_food_item_being_donated">Describe the name and weight of the food item being donated.</string>
     <string name="_25_kilos_of_something">25 Kilos of Something</string>
@@ -45,5 +44,11 @@
     <string name="add_at_least_one_image">Add at least one image.</string>
     <string name="set">set</string>
     <string name="set_the_location_of_the_donated_items">Set the location for the donated items.</string>
+    <string name="fire_donor">Fire Donor.</string>
+    <string name="my_donations">My Donations.</string>
+    <string name="new_donation">New Donation.</string>
+    <string name="my_requests">My Requests.</string>
+    <string name="view">View.</string>
+    <string name="request">Request.</string>
 
 </resources>
