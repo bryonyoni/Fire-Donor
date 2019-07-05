@@ -50,5 +50,7 @@
     <string name="my_requests">My Requests.</string>
     <string name="view">View.</string>
     <string name="request">Request.</string>
+    <string name="donation_details">Donation Details.</string>
+    <string name="listed_on">Listed on:</string>
 
 </resources>
