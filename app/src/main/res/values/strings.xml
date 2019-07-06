@@ -48,7 +48,6 @@
     <string name="my_donations">My Donations.</string>
     <string name="new_donation">New Donation.</string>
     <string name="my_requests">My Requests.</string>
-    <string name="view">View.</string>
     <string name="request">Request.</string>
     <string name="donation_details">Donation Details.</string>
     <string name="listed_on">Listed on:</string>
@@ -67,12 +66,26 @@
     <string name="kbr_035_y">KBR 035 Y</string>
     <string name="confirm_everything">Confirm Everything.</string>
     <string name="confirm_all_the_details_and_information_before_sending_the_request">Confirm all the details and information before sending the request.</string>
-    <string name="organisation_location">Organisation Location</string>
     <string name="name">Name</string>
     <string name="pick_up_date">Pick Up Date.</string>
     <string name="pick_up_vehicle">Pick Up Vehicle.</string>
     <string name="send_request">Send Request.</string>
     <string name="request_has_been_sent">Request has been sent.</string>
     <string name="your_request_has_been_sent_you_may_periodically_check_the_status_of_your_request_in_the_my_requests_page">Your request has been sent, you may periodically check the status of your request in the My-Requests page.</string>
+    <string name="edit_my_donation">Edit My Donation...</string>
+    <string name="food_items_being_donated">Food items being donated.</string>
+    <string name="items_name_and_mass">items name and mass</string>
+    <string name="donation_details_blah_blah_blah">Donation details blah blah blah...</string>
+    <string name="near_nairobi_cbd">Near Nairobi CBD.</string>
+    <string name="requests">Requests.</string>
+    <string name="organisation">Organisation</string>
+    <string name="location">Location.</string>
+    <string name="pick_up_vehicle_to_expect">Pick up vehicle to expect.</string>
+    <string name="accept">Accept</string>
+    <string name="here_are_all_your_requested_donations">Here are all your requested donations.</string>
+    <string name="view">View.</string>
+    <string name="pending">Pending.</string>
+    <string name="status">Status.</string>
+    <string name="delete">Delete.</string>
 
 </resources>
