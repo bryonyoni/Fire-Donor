@@ -52,5 +52,27 @@
     <string name="request">Request.</string>
     <string name="donation_details">Donation Details.</string>
     <string name="listed_on">Listed on:</string>
+    <string name="organisation_name">Organisation name.</string>
+    <string name="these_details_will_be_passed_to_the_donor">These details will be passed to the donor.</string>
+    <string name="your_organisation_name">Your organisation name.</string>
+    <string name="organisation_location">Organisation Location</string>
+    <string name="next_your_location_for_delivery">Next, your location for delivery.</string>
+    <string name="set_location">Set Location.</string>
+    <string name="pickup_date">Pickup Date.</string>
+    <string name="next_the_date_of_pick_up">Next, the date of pick up.</string>
+    <string name="open_calendar">Open Calendar.</string>
+    <string name="expected_vehicle_for_delivery">Expected Vehicle for Delivery.</string>
+    <string name="finally_the_delivery_vehicle_details_please_describe_the_delivery_vehicle_and_its_number_plate">Finally, the delivery vehicle details. Please describe the delivery vehicle and its number plate.</string>
+    <string name="a_2006_isuzu_model_d_truck">A 2006 Isuzu Model D Truck.</string>
+    <string name="kbr_035_y">KBR 035 Y</string>
+    <string name="confirm_everything">Confirm Everything.</string>
+    <string name="confirm_all_the_details_and_information_before_sending_the_request">Confirm all the details and information before sending the request.</string>
+    <string name="organisation_location">Organisation Location</string>
+    <string name="name">Name</string>
+    <string name="pick_up_date">Pick Up Date.</string>
+    <string name="pick_up_vehicle">Pick Up Vehicle.</string>
+    <string name="send_request">Send Request.</string>
+    <string name="request_has_been_sent">Request has been sent.</string>
+    <string name="your_request_has_been_sent_you_may_periodically_check_the_status_of_your_request_in_the_my_requests_page">Your request has been sent, you may periodically check the status of your request in the My-Requests page.</string>
 
 </resources>

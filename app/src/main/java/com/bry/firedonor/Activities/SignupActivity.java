@@ -92,8 +92,9 @@ public class SignupActivity extends AppCompatActivity {
                 final FirebaseUser user = firebaseAuth.getCurrentUser();
                 if(user != null){
                     Log.d(TAG,"User was just created, opening main activity");
-                    Intent intent = new Intent(SignupActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    Intent intent = new Intent(SignupActivity.this, MainActivity.class)
+                            .setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                    firebaseAuth.getInstance().signOut();
                     startActivity(intent);
                     finish();
                 }
@@ -540,7 +541,8 @@ public class SignupActivity extends AppCompatActivity {
                 InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
             }
-            mAuth.createUserWithEmailAndPassword(mEnteredEmailString,mEnteredPasswordString).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+            mAuth.createUserWithEmailAndPassword(mEnteredEmailString,mEnteredPasswordString)
+                    .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
                     if(task.isSuccessful()){
