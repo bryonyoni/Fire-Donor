@@ -26,7 +26,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".MyListedRequests"></activity>
+        <activity android:name=".UserAccountActivity"></activity>
+        <activity android:name=".MyListedRequests" />
         <activity android:name=".MyDonationActivity" />
         <activity android:name=".Activities.MyDonationActivity" />
         <activity android:name=".Activities.RequestDonationActivity" />

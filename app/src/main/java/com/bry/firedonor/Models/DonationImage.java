@@ -7,6 +7,7 @@ public class DonationImage {
     private Bitmap mImageBitmap;
     private String imageId;
     private String encodedImageString;
+    private String DonationItemId;
 
     public DonationImage(){}
 
@@ -38,5 +39,13 @@ public class DonationImage {
 
     public void setEncodedImageString(String encodedImageString) {
         this.encodedImageString = encodedImageString;
+    }
+
+    public String getDonationItemId() {
+        return DonationItemId;
+    }
+
+    public void setDonationItemId(String donationItemId) {
+        DonationItemId = donationItemId;
     }
 }

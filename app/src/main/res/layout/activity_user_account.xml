@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".UserAccountActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <!--Top tile part-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/dialog_bg"
+            android:padding="5dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/ic_action_activity_back"
+                android:layout_height="40dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20sp"
+                android:layout_gravity="center_vertical"
+                android:text="@string/my_account"
+                android:textColor="@color/titlecolor"
+                android:layout_height="wrap_content" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:background="@drawable/dialog_bg"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_height="wrap_content">
+
+            <!--Account username-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:textColor="@color/titlecolor"
+                        android:textSize="17sp"
+                        android:text="@string/account_username"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="250dp"
+                        android:textSize="13sp"
+                        android:text="Br Kaaaaaaaaaaaan."
+                        android:layout_height="wrap_content" />
+
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:src="@drawable/ic_action_edit"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="30dp" />
+
+            </RelativeLayout>
+
+            <!--My email part-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/my_email"
+                android:textColor="@color/titlecolor"
+                android:textSize="17sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="memail@mymail.com."
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content" />
+
+            <!--online since part-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="@string/online_since"
+                android:textColor="@color/titlecolor"
+                android:textSize="17sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="20 January, 2018."
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="On Tuesday, 1 year ago."
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:layout_height="wrap_content" />
+
+            <!--version part-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="App version."
+                android:textColor="@color/titlecolor"
+                android:textSize="17sp"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginTop="20dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:text="Fire Donor v1.1"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:textSize="14sp"
+                android:layout_height="wrap_content" />
+
+            <!--patent pending and logout button-->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:text="@string/logout"
+                    android:textColor="@color/titlecolor"
+                    android:background="@null"
+                    android:layout_alignParentEnd="true"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:text="@string/patent_pending"
+                    android:layout_marginStart="15dp"
+                    android:textSize="13sp"
+                    android:layout_height="wrap_content" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.design.widget.CoordinatorLayout>

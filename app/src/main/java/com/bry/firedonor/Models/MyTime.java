@@ -2,6 +2,7 @@ package com.bry.firedonor.Models;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Locale;
 
 
 public class MyTime {
@@ -124,5 +125,28 @@ public class MyTime {
 
     public void setC(Calendar mC) {
         this.mC = mC;
+    }
+
+    public String getCasualDate(){
+        String dayOfWeek = mC.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+        long howManyWeeksAgoWasThisUploaded = (Calendar.getInstance().getTimeInMillis()- mC.getTimeInMillis())/(1000*60*60*24*7);
+        long howManyDaysAgoWasThisUploaded = (Calendar.getInstance().getTimeInMillis()- mC.getTimeInMillis())/(1000*60*60*24);
+        long howLongAgoInYears = (Calendar.getInstance().getTimeInMillis()- mC.getTimeInMillis())/(1000 * 31449600);
+        if(howManyWeeksAgoWasThisUploaded==0){
+            if(howManyDaysAgoWasThisUploaded==0){
+                return dayOfWeek+", yesterday.";
+            }else{
+                return dayOfWeek+", "+howManyDaysAgoWasThisUploaded+" Days ago.";
+            }
+        }else if(howManyWeeksAgoWasThisUploaded<52){
+            return dayOfWeek+", "+howManyWeeksAgoWasThisUploaded+" weeks ago.";
+        }else{
+            if(howLongAgoInYears==0) return dayOfWeek+", sometime Last year.";
+            else return dayOfWeek+", "+howLongAgoInYears+" years ago.";
+        }
+    }
+
+    public String getOfficialDate(){
+        return getDay()+" "+getAbbreviatedMonth()+", "+getYear();
     }
 }

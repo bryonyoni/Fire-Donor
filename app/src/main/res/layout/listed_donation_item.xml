@@ -14,14 +14,16 @@
 
         <!--Username part-->
         <TextView
+            android:id="@+id/usernameTextView"
             android:layout_width="wrap_content"
-            android:text="By user: username"
+            android:text="@string/by_user"
             android:textSize="15sp"
             android:textColor="@color/colorPrimaryDark"
             android:layout_height="wrap_content" />
 
         <!--Details part-->
         <TextView
+            android:id="@+id/detailsTextView"
             android:layout_width="match_parent"
             android:text="Details blah blah blah..."
             android:textSize="13sp"
@@ -41,6 +43,7 @@
                 app:cardCornerRadius="14dp">
 
                 <ImageView
+                    android:id="@+id/mainImage"
                     android:layout_width="match_parent"
                     android:scaleType="fitXY"
                     android:layout_height="match_parent" />
@@ -57,11 +60,66 @@
 
                 <!--Other images recyclerview part-->
                 <android.support.v7.widget.RecyclerView
+                    android:id="@+id/otherImagesRecyclerView"
                     android:layout_width="match_parent"
+                    android:visibility="gone"
                     android:layout_height="60dp"/>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+                    <!--Small image 1-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="50dp"
+                        app:cardCornerRadius="14dp">
+
+                        <ImageView
+                            android:id="@+id/image1"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_height="match_parent" />
+
+                    </android.support.v7.widget.CardView>
+
+                    <!--Small image 2-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_marginEnd="10dp"
+                        app:cardCornerRadius="14dp">
+
+                        <ImageView
+                            android:id="@+id/image2"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_height="match_parent" />
+
+                    </android.support.v7.widget.CardView>
+
+                    <!--Small image 3-->
+                    <android.support.v7.widget.CardView
+                        android:layout_width="50dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_height="50dp"
+                        app:cardCornerRadius="14dp">
+
+                        <ImageView
+                            android:id="@+id/image3"
+                            android:layout_width="match_parent"
+                            android:scaleType="fitXY"
+                            android:layout_height="match_parent" />
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
 
                 <!--Date details part-->
                 <TextView
+                    android:id="@+id/dateDetails"
                     android:layout_width="match_parent"
                     android:layout_marginTop="10dp"
                     android:layout_marginBottom="10dp"
@@ -77,6 +135,7 @@
 
                     <!--Request button-->
                     <android.support.v7.widget.CardView
+                        android:id="@+id/requestButton"
                         android:layout_width="wrap_content"
                         android:padding="5dp"
                         android:layout_alignParentBottom="true"
@@ -99,6 +158,7 @@
 
                     <!--View button-->
                     <RelativeLayout
+                        android:id="@+id/viewButton"
                         android:layout_width="wrap_content"
                         android:padding="5dp"
                         android:background="@drawable/dialog_bg_stroke"

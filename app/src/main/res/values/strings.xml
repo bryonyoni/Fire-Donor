@@ -72,10 +72,10 @@
     <string name="send_request">Send Request.</string>
     <string name="request_has_been_sent">Request has been sent.</string>
     <string name="your_request_has_been_sent_you_may_periodically_check_the_status_of_your_request_in_the_my_requests_page">Your request has been sent, you may periodically check the status of your request in the My-Requests page.</string>
-    <string name="edit_my_donation">Edit My Donation...</string>
+    <string name="edit_my_donation">Edit My Donation…</string>
     <string name="food_items_being_donated">Food items being donated.</string>
     <string name="items_name_and_mass">items name and mass</string>
-    <string name="donation_details_blah_blah_blah">Donation details blah blah blah...</string>
+    <string name="donation_details_blah_blah_blah">Donation details blah blah blah…</string>
     <string name="near_nairobi_cbd">Near Nairobi CBD.</string>
     <string name="requests">Requests.</string>
     <string name="organisation">Organisation</string>
@@ -87,5 +87,17 @@
     <string name="pending">Pending.</string>
     <string name="status">Status.</string>
     <string name="delete">Delete.</string>
+    <string name="account_username">Account Username.</string>
+    <string name="my_email">My Email.</string>
+    <string name="online_since">Online Since</string>
+    <string name="logout">Logout.</string>
+    <string name="patent_pending">©, Patent pending.</string>
+    <string name="my_account">My Account.</string>
+    <string name="by_user">By user:</string>
+    <string name="uploaded_on">Uploaded on:</string>
+    <string name="loading">Loading...</string>
+    <string name="donation_listed_on">Donation listed on</string>
+    <string name="just_near">Just near</string>
+    <string name="close">Close.</string>
 
 </resources>

@@ -11,4 +11,9 @@ public class Constants {
     public static final String UPLOADED_DONATION_ITEM_IMAGES = "DonationImages";
 
     public static final String UPLOADED_DONATION_ITEMS = "Donations";
+    public static final String NUMBER_OF_FLAGS = "NumberOfFlags";
+    public static final int LOADING_NUMBER_LIMIT = 6;
+
+    public static final String VIEW_DONATION_INTENT_FILTER = "VIEW_DONATION_INTENT_FILTER";
+    public static final String REQUEST_DONATION_INTENT_FILTER = "REQUEST_DONATION_INTENT_FILTER";
 }

@@ -13,6 +13,10 @@ public class DonationItem {
     private MyTime timeOfCreation;
     private String itemDetails;
     private SetLocation itemLocation;
+    private Boolean hasBeenTakenDown = false;
+    private Integer numberOfReports = 0;
+    private RequestItem acceptedRequestItem;
+    private String uploaderName;
 
     public DonationItem(){}
 
@@ -25,6 +29,7 @@ public class DonationItem {
         timeOfCreation = new MyTime(Calendar.getInstance());
     }
 
+
     public String getItemName() {
         return itemName;
     }
@@ -32,6 +37,7 @@ public class DonationItem {
     public void setItemName(String itemName) {
         this.itemName = itemName;
     }
+
 
     public List<DonationImage> getItemImages() {
         return itemImages;
@@ -41,6 +47,11 @@ public class DonationItem {
         this.itemImages = itemImages;
     }
 
+    public void addItemImage(DonationImage image){
+        this.itemImages.add(image);
+    }
+
+
     public String getMainImageId() {
         return mainImageId;
     }
@@ -48,6 +59,7 @@ public class DonationItem {
     public void setMainImageId(String mainImageId) {
         this.mainImageId = mainImageId;
     }
+
 
     public MyTime getTimeOfCreation() {
         return timeOfCreation;
@@ -57,6 +69,7 @@ public class DonationItem {
         this.timeOfCreation = timeOfCreation;
     }
 
+
     public String getItemDetails() {
         return itemDetails;
     }
@@ -64,6 +77,7 @@ public class DonationItem {
     public void setItemDetails(String itemDetails) {
         this.itemDetails = itemDetails;
     }
+
 
     public SetLocation getItemLocation() {
         return itemLocation;
@@ -73,6 +87,7 @@ public class DonationItem {
         this.itemLocation = itemLocation;
     }
 
+
     public String getItemId() {
         return itemId;
     }
@@ -81,11 +96,52 @@ public class DonationItem {
         this.itemId = itemId;
     }
 
+
     public String getUploaderId() {
         return uploaderId;
     }
 
     public void setUploaderId(String uploaderId) {
         this.uploaderId = uploaderId;
+    }
+
+
+    public Boolean hasBeenTakenDown() {
+        return hasBeenTakenDown;
+    }
+
+    public void setHasBeenTakenDown(Boolean hasBeenTakenDown) {
+        this.hasBeenTakenDown = hasBeenTakenDown;
+    }
+
+
+    public Integer getNumberOfReports() {
+        return numberOfReports;
+    }
+
+    public void setNumberOfReports(Integer numberOfReports) {
+        this.numberOfReports = numberOfReports;
+    }
+
+
+    public RequestItem getAcceptedRequestItem() {
+        return acceptedRequestItem;
+    }
+
+    public void setAcceptedRequestItem(RequestItem acceptedRequestItem) {
+        this.acceptedRequestItem = acceptedRequestItem;
+    }
+
+
+    public boolean doesAcceptedRequestItemExist(){
+        return acceptedRequestItem!=null;
+    }
+
+    public String getUploaderName() {
+        return uploaderName;
+    }
+
+    public void setUploaderName(String uploaderName) {
+        this.uploaderName = uploaderName;
     }
 }

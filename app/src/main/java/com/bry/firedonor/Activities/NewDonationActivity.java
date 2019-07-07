@@ -479,6 +479,7 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
                     Bitmap bm = getResizedBitmap(bitmap,1500);
                     DonationImage donImage = new DonationImage();
                     donImage.setImageBitmap(bm);
+                    donImage.setImageId(Integer.toString(selectedDonationItemImages.size()));
 
                     selectedDonationItemImages.add(donImage);
                     reloadSelectedPhotosList();
@@ -495,6 +496,7 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
                 Bitmap bm = getResizedBitmap(bitmap,1500);
                 DonationImage donImage = new DonationImage();
                 donImage.setImageBitmap(bm);
+                donImage.setImageId(Integer.toString(selectedDonationItemImages.size()));
 
                 selectedDonationItemImages.add(donImage);
                 reloadSelectedPhotosList();

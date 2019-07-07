@@ -8,6 +8,7 @@
     tools:context=".Activities.MainActivity">
 
     <RelativeLayout
+        android:id="@+id/everythingRelativeLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -56,6 +57,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageButton
+                        android:id="@+id/openFeedbackButton"
                         android:layout_width="40dp"
                         android:src="@drawable/ic_action_feedback"
                         android:background="@null"
@@ -63,6 +65,7 @@
                         android:layout_height="40dp" />
 
                     <ImageButton
+                        android:id="@+id/userAccountButton"
                         android:layout_width="40dp"
                         android:src="@drawable/ic_action_user"
                         android:background="@null"
@@ -73,15 +76,30 @@
 
             </RelativeLayout>
 
+            <TextView
+                android:id="@+id/loadingText"
+                android:visibility="gone"
+                android:layout_marginBottom="5dp"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:text="@string/loading"
+                android:layout_height="wrap_content" />
+
+
             <android.support.v7.widget.RecyclerView
-                android:layout_marginBottom="80dp"
+                android:id="@+id/listedItemsRecyclerView"
+                android:layout_marginBottom="85dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
 
         </LinearLayout>
 
         <!--Contains the bottom nav buttons-->
         <LinearLayout
+            android:id="@+id/bottomNavButtonsLinearLayout"
             android:layout_width="match_parent"
             android:orientation="horizontal"
             android:gravity="center_horizontal"
@@ -191,55 +209,62 @@
 
         <!--Contains the collapsed version of the icons-->
         <LinearLayout
+            android:id="@+id/collapsedNavButtonsLinearLayout"
             android:layout_width="match_parent"
             android:orientation="horizontal"
-            android:gravity="center_horizontal"
             android:visibility="gone"
             android:background="@drawable/dialog_bg"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:paddingTop="15dp"
-            android:scaleY="0.6"
+            android:scaleY="1"
             android:paddingBottom="15dp"
             android:layout_alignParentBottom="true"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:scaleX="0.6"
-                android:layout_width="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/ic_action_collapsed"
-                android:layout_height="30dp" />
+            <LinearLayout
+                android:id="@+id/collapsedImagesLinearLayout"
+                android:layout_width="match_parent"
+                android:scaleX="1"
+                android:gravity="center_horizontal"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
 
-            <ImageView
-                android:scaleX="0.6"
-                android:layout_width="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/ic_action_collapsed"
-                android:layout_height="30dp" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/ic_action_collapsed"
+                    android:layout_height="30dp" />
 
-            <ImageView
-                android:scaleX="0.6"
-                android:layout_width="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/ic_action_collapsed"
-                android:layout_height="30dp" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/ic_action_collapsed"
+                    android:layout_height="30dp" />
 
-            <ImageView
-                android:scaleX="0.6"
-                android:layout_width="30dp"
-                android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:background="@drawable/ic_action_collapsed"
-                android:layout_height="30dp" />
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/ic_action_collapsed"
+                    android:layout_height="30dp" />
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_marginLeft="30dp"
+                    android:background="@drawable/ic_action_collapsed"
+                    android:layout_height="30dp" />
+
+            </LinearLayout>
 
         </LinearLayout>
 
         <!--Contains the view donation elements-->
         <RelativeLayout
+            android:id="@+id/viewDonationRelativeLayout"
             android:layout_width="match_parent"
             android:background="@drawable/dialog_bg"
             android:padding="10dp"
@@ -247,9 +272,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:translationX="200dp"
-            android:alpha="0"
-            android:visibility="gone"
+            android:translationX="00dp"
+            android:alpha="1"
+            android:visibility="visible"
             android:scaleX="0.8"
             android:scaleY="0.8"
             android:layout_height="match_parent">
@@ -273,12 +298,14 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
+                            android:id="@+id/backButton"
                             android:layout_width="40dp"
                             android:layout_gravity="center_vertical"
                             android:src="@drawable/ic_action_activity_back"
                             android:layout_height="40dp" />
 
                         <TextView
+                            android:id="@+id/uploaderTextView"
                             android:layout_width="wrap_content"
                             android:textSize="20sp"
                             android:layout_gravity="center_vertical"
@@ -297,6 +324,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
+                            android:id="@+id/flagButton"
                             android:layout_width="40dp"
                             android:scaleY="0.8"
                             android:scaleX="0.8"
@@ -321,6 +349,7 @@
 
                         <!--Title and description part-->
                         <TextView
+                            android:id="@+id/titleAndWeightTextView"
                             android:layout_width="match_parent"
                             android:text="44 kilos of blah blah blah..."
                             android:layout_marginLeft="15dp"
@@ -340,6 +369,7 @@
                             app:cardCornerRadius="14dp">
 
                             <ImageView
+                                android:id="@+id/mainImageImageView"
                                 android:layout_width="match_parent"
                                 android:scaleType="centerCrop"
                                 android:layout_height="match_parent" />
@@ -368,6 +398,7 @@
                                     app:cardCornerRadius="14dp">
 
                                     <ImageView
+                                        android:id="@+id/smallImage1"
                                         android:layout_width="match_parent"
                                         android:scaleType="fitXY"
                                         android:layout_height="match_parent" />
@@ -383,6 +414,7 @@
                                     app:cardCornerRadius="14dp">
 
                                     <ImageView
+                                        android:id="@+id/smallImage2"
                                         android:layout_width="match_parent"
                                         android:scaleType="fitXY"
                                         android:layout_height="match_parent" />
@@ -398,31 +430,19 @@
                                     app:cardCornerRadius="14dp">
 
                                     <ImageView
+                                        android:id="@+id/smallImage3"
                                         android:layout_width="match_parent"
                                         android:scaleType="fitXY"
                                         android:layout_height="match_parent" />
 
                                 </android.support.v7.widget.CardView>
 
-                                <!--Small image 4-->
-                                <android.support.v7.widget.CardView
-                                    android:layout_width="50dp"
-                                    android:layout_marginEnd="10dp"
-                                    app:cardBackgroundColor="@color/colorPrimary"
-                                    android:layout_height="50dp"
-                                    app:cardCornerRadius="14dp">
-
-                                    <ImageView
-                                        android:layout_width="match_parent"
-                                        android:scaleType="fitXY"
-                                        android:layout_height="match_parent" />
-
-                                </android.support.v7.widget.CardView>
 
                             </LinearLayout>
 
                             <!--The view images button-->
                             <RelativeLayout
+                                android:id="@+id/viewImagesRelativeLayoutButton"
                                 android:layout_width="wrap_content"
                                 android:padding="5dp"
                                 android:layout_centerVertical="true"
@@ -457,6 +477,7 @@
 
                         <!--Donation details body-->
                         <TextView
+                            android:id="@+id/donationDetailsTextV"
                             android:layout_width="match_parent"
                             android:text="Donation details blah blah blah..."
                             android:layout_marginLeft="15dp"
@@ -477,6 +498,7 @@
 
                         <!--Donation Listing date body-->
                         <TextView
+                            android:id="@+id/formalTimeTextView"
                             android:layout_width="match_parent"
                             android:text="Donation listed on 4 Jan, 2019."
                             android:layout_marginLeft="15dp"
@@ -486,6 +508,7 @@
 
                         <!--Informal date of listing-->
                         <TextView
+                            android:id="@+id/informalTimeTextView"
                             android:layout_width="match_parent"
                             android:text="Sunday, 3 weeks ago."
                             android:textSize="11sp"
@@ -518,6 +541,7 @@
                                     android:layout_height="wrap_content" />
 
                                 <TextView
+                                    android:id="@+id/locationDescriptionTextView"
                                     android:layout_width="match_parent"
                                     android:text="Just near blah blah blah..."
                                     android:layout_height="wrap_content" />
@@ -526,6 +550,7 @@
 
                             <!--Contains the open map part-->
                             <ImageView
+                                android:id="@+id/openMapImageView"
                                 android:layout_width="30dp"
                                 android:layout_centerVertical="true"
                                 android:layout_alignParentEnd="true"
@@ -542,6 +567,7 @@
 
                             <!--Request button-->
                             <android.support.v7.widget.CardView
+                                android:id="@+id/requestCardView"
                                 android:layout_width="wrap_content"
                                 android:padding="5dp"
                                 android:layout_marginRight="15dp"
@@ -571,8 +597,96 @@
 
             </LinearLayout>
             
-            
         </RelativeLayout>
+
+        <!--Contains the map layout-->
+        <RelativeLayout
+            android:id="@+id/mapRelativeLayout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/mapContainer"
+                android:layout_width="match_parent"
+                android:alpha="0"
+                app:cardCornerRadius="14dp"
+                android:translationY="100dp"
+                android:layout_margin="10dp"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:background="@android:color/white"
+                        android:layout_margin="10dp"
+                        android:visibility="gone"
+                        app:cardCornerRadius="14dp"
+                        app:cardPreventCornerOverlap="false"
+                        android:layout_height="wrap_content">
+
+                        <fragment
+                            android:id="@+id/place_autocomplete_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment" />
+
+                    </android.support.v7.widget.CardView>
+
+                    <fragment
+                        class="com.google.android.gms.maps.MapFragment"
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/setLocationButton"
+                        android:layout_width="wrap_content"
+                        android:padding="5dp"
+                        android:layout_marginRight="15dp"
+                        android:layout_marginLeft="15dp"
+                        app:cardBackgroundColor="@color/colorPrimaryDark"
+                        app:cardCornerRadius="12dp"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:text="@string/close"
+                            android:layout_marginLeft="15dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="10dp"
+                            android:layout_marginRight="15dp"
+                            android:textColor="@color/white"
+                            android:layout_height="wrap_content" />
+
+                    </android.support.v7.widget.CardView>
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/progressbarRelativeLayout"
+        android:layout_width="match_parent"
+        android:visibility="gone"
+        android:layout_height="match_parent">
+
+        <ProgressBar
+            android:id="@+id/progressBarSignUp"
+            style="?android:attr/progressBarStyle"
+            android:layout_centerInParent="true"
+            android:layout_width="60dp"
+            android:layout_height="60dp"/>
 
     </RelativeLayout>
 
