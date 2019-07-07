@@ -734,6 +734,15 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
     private void openMapToSetLocation(){
         mapRelativeLayout.setVisibility(View.VISIBLE);
         isMapOpen = true;
+
+        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(NewDonationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUESTCODE);
+        }else{
+            map.setMyLocationEnabled(true);
+            map.setOnMyLocationButtonClickListener(this);
+            map.setOnMyLocationClickListener(this);
+        }
+
         mapContainer.animate().alpha(1f).translationY(0).scaleX(1).scaleY(1).setDuration(mAnimationDuration)
                 .setInterpolator(new LinearOutSlowInInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
@@ -865,14 +874,6 @@ public class NewDonationActivity extends AppCompatActivity implements OnMapReady
             public void onMarkerDrag(Marker arg0) {
             }
         });
-
-        if (ContextCompat.checkSelfPermission(mContext, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(NewDonationActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, REQUESTCODE);
-        }else{
-            map.setMyLocationEnabled(true);
-            map.setOnMyLocationButtonClickListener(this);
-            map.setOnMyLocationClickListener(this);
-        }
 
         LatLng botBnd = new LatLng(-4.716667, 27.433333);
         LatLng topBnd = new LatLng(4.883333, 41.8583834826426);

@@ -8,7 +8,9 @@ import android.support.v4.content.LocalBroadcastManager;
 import com.bry.firedonor.Constants;
 import com.bry.firedonor.Models.DonationImage;
 import com.bry.firedonor.Models.DonationItem;
+import com.bry.firedonor.Models.RequestItem;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -64,6 +66,29 @@ public class DatabaseManager {
                 }
             });
         }
+
+        return this;
+    }
+
+    public DatabaseManager uploadDonationRequest(RequestItem item){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        DatabaseReference requestRef = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_USERS).child(uid)
+                .child(Constants.UPLOADED_DONATION_REQUESTS);
+        requestRef.push();
+        String pushRef = requestRef.getKey();
+
+        item.setRequestId(pushRef);
+        requestRef.setValue(item);
+
+        DatabaseReference donationRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEMS).child(item.getDonationId())
+                .child(Constants.UPLOADED_DONATION_REQUESTS).child(pushRef);
+        donationRef.setValue(item).addOnSuccessListener(new OnSuccessListener<Void>() {
+            @Override
+            public void onSuccess(Void aVoid) {
+                LocalBroadcastManager.getInstance(mContext).sendBroadcast(new Intent(BROADCAST_RECEIVER));
+            }
+        });
 
         return this;
     }

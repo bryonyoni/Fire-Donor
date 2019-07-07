@@ -1,13 +1,15 @@
-package com.bry.firedonor;
+package com.bry.firedonor.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MyDonationActivity extends AppCompatActivity {
+import com.bry.firedonor.R;
+
+public class UserAccountActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my_donation2);
+        setContentView(R.layout.activity_user_account);
     }
 }

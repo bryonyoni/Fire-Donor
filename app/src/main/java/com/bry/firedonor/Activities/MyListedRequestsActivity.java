@@ -1,9 +1,11 @@
-package com.bry.firedonor;
+package com.bry.firedonor.Activities;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class MyListedRequests extends AppCompatActivity {
+import com.bry.firedonor.R;
+
+public class MyListedRequestsActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

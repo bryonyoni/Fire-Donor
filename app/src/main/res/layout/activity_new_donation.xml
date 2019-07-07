@@ -533,7 +533,7 @@
                         android:layout_width="match_parent"
                         android:background="@android:color/white"
                         android:layout_margin="10dp"
-                        app:cardCornerRadius="4dp"
+                        app:cardCornerRadius="14dp"
                         app:cardPreventCornerOverlap="false"
                         android:layout_height="wrap_content">
 
@@ -555,11 +555,11 @@
                         android:id="@+id/setLocationButton"
                         android:layout_width="wrap_content"
                         android:text="@string/set"
-                        android:textColor="@android:color/white"
+                        android:textColor="@color/titlecolor"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentBottom="true"
                         android:layout_margin="20dp"
-                        android:background="@color/titlecolor"
+                        android:background="@drawable/dialog_bg_stroke"
                         android:layout_height="wrap_content" />
 
                 </RelativeLayout>

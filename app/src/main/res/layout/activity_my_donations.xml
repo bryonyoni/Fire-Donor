@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.MyDonationsActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/mainLinearLayout"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginLeft="10dp"
+                android:padding="5dp"
+                android:background="@drawable/dialog_bg"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/backButton"
+                    android:layout_width="40dp"
+                    android:layout_gravity="center_vertical"
+                    android:src="@drawable/ic_action_activity_back"
+                    android:layout_height="40dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_gravity="center_vertical"
+                    android:text="My Donation..."
+                    android:textColor="@color/titlecolor"
+                    android:layout_height="wrap_content" />
+
+            </LinearLayout>
+
+            <android.support.v7.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:paddingTop="10dp"
+                android:layout_margin="10dp"
+                android:layout_height="match_parent"/>
+
+        </LinearLayout>
+
+        <!--Contains the edit donation part-->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:background="@drawable/dialog_bg"
+            android:layout_margin="10dp"
+            android:translationX="200dp"
+            android:alpha="0"
+            android:visibility="gone"
+            android:scaleX="0.8"
+            android:scaleY="0.8"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <!--Top bar part-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp"
+                        android:padding="5dp"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:layout_width="40dp"
+                            android:layout_gravity="center_vertical"
+                            android:translationX="-10dp"
+                            android:src="@drawable/ic_action_activity_back"
+                            android:layout_height="40dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textSize="20sp"
+                            android:layout_gravity="center_vertical"
+                            android:text="@string/edit_my_donation"
+                            android:textColor="@color/titlecolor"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:text="@string/delete"
+                        android:textSize="17sp"
+                        android:layout_marginEnd="20dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerInParent="true"
+                        android:layout_marginTop="50dp"
+                        android:textColor="@color/titlecolor"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+                <!--Images part-->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_height="wrap_content">
+
+                    <!--Contains the add image icons-->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:src="@drawable/ic_action_add_photo"
+                            android:background="@android:color/darker_gray"
+                            android:layout_height="30dp" />
+
+                        <ImageButton
+                            android:layout_width="30dp"
+                            android:layout_marginTop="10dp"
+                            android:src="@drawable/ic_action_take_photo"
+                            android:background="@android:color/darker_gray"
+                            android:layout_height="30dp" />
+
+                    </LinearLayout>
+
+                    <!--Contains the small images-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_height="wrap_content">
+
+                        <!--Small image 1-->
+                        <android.support.v7.widget.CardView
+                            android:layout_width="70dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginEnd="10dp"
+                            app:cardBackgroundColor="@color/colorPrimary"
+                            android:layout_height="70dp"
+                            app:cardCornerRadius="14dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_height="match_parent" />
+
+                        </android.support.v7.widget.CardView>
+
+                        <!--Small image 2-->
+                        <android.support.v7.widget.CardView
+                            android:layout_width="70dp"
+                            app:cardBackgroundColor="@color/colorPrimary"
+                            android:layout_height="70dp"
+                            android:layout_marginEnd="10dp"
+                            app:cardCornerRadius="14dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_height="match_parent" />
+
+                        </android.support.v7.widget.CardView>
+
+                        <!--Small image 3-->
+                        <android.support.v7.widget.CardView
+                            android:layout_width="70dp"
+                            android:layout_marginEnd="10dp"
+                            app:cardBackgroundColor="@color/colorPrimary"
+                            android:layout_height="70dp"
+                            app:cardCornerRadius="14dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_height="match_parent" />
+
+                        </android.support.v7.widget.CardView>
+
+                        <!--Small image 4-->
+                        <android.support.v7.widget.CardView
+                            android:layout_width="70dp"
+                            android:layout_marginEnd="10dp"
+                            app:cardBackgroundColor="@color/colorPrimary"
+                            android:layout_height="70dp"
+                            app:cardCornerRadius="14dp">
+
+                            <ImageView
+                                android:layout_width="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_height="match_parent" />
+
+                        </android.support.v7.widget.CardView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <!--Donation item name and mass part-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/titlecolor"
+                            android:textSize="17sp"
+                            android:text="@string/food_items_being_donated"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="250dp"
+                            android:textSize="13sp"
+                            android:text="@string/items_name_and_mass"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_action_edit"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_height="30dp" />
+
+                </RelativeLayout>
+
+                <!--Donation item details part-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/titlecolor"
+                            android:textSize="17sp"
+                            android:text="@string/donation_details"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="250dp"
+                            android:textSize="13sp"
+                            android:text="@string/donation_details_blah_blah_blah"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_action_edit"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_height="30dp" />
+
+                </RelativeLayout>
+
+                <!--Set Location part-->
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="15dp"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:textColor="@color/titlecolor"
+                            android:textSize="17sp"
+                            android:text="@string/set_location"
+                            android:layout_height="wrap_content" />
+
+                        <TextView
+                            android:layout_width="250dp"
+                            android:textSize="13sp"
+                            android:text="@string/near_nairobi_cbd"
+                            android:layout_height="wrap_content" />
+
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:src="@drawable/ic_action_edit"
+                        android:layout_centerVertical="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_height="30dp" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/progressbarRelativeLayout"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBarSignUp"
+                style="?android:attr/progressBarStyle"
+                android:layout_centerInParent="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.design.widget.CoordinatorLayout>

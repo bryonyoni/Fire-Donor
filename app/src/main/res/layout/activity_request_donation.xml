@@ -5,6 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/requestDonationCoordinatorLayout"
     tools:context=".Activities.RequestDonationActivity">
 
     <RelativeLayout
@@ -12,6 +13,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/newRequestLinearLayout"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="match_parent">
@@ -28,6 +30,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/backImageView"
                     android:layout_width="40dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_action_activity_back"
@@ -62,6 +65,7 @@
                     app:cardCornerRadius="14dp">
 
                     <ImageView
+                        android:id="@+id/donationItemImageView"
                         android:layout_width="match_parent"
                         android:scaleType="fitXY"
                         android:layout_height="match_parent" />
@@ -76,6 +80,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/donationTitleTextView"
                         android:layout_width="match_parent"
                         android:text="44 kilos of blah blah blah..."
                         android:layout_marginLeft="15dp"
@@ -84,6 +89,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/listingDateTextView"
                         android:layout_width="match_parent"
                         android:text="Listed on 5 July, 2019."
                         android:layout_marginLeft="15dp"
@@ -103,6 +109,7 @@
 
                 <!--Organisation name form-->
                 <LinearLayout
+                    android:id="@+id/organisationNameLinearLayout"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
@@ -148,7 +155,7 @@
                         android:layout_height="wrap_content">
 
                         <Button
-                            android:id="@+id/nameAndMassContinueButton"
+                            android:id="@+id/organisationContinueButton"
                             android:layout_width="wrap_content"
                             android:text="@string/Continue"
                             android:layout_alignParentEnd="true"
@@ -161,12 +168,14 @@
 
                 </LinearLayout>
 
-                <!--Organisation locaiton form-->
+                <!--Organisation location form-->
                 <LinearLayout
+                    android:id="@+id/organisationLocationLinearLayout"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
                     android:visibility="gone"
+                    android:translationX="400dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/dialog_bg"
                     android:layout_height="wrap_content">
@@ -195,9 +204,18 @@
                         android:layout_marginBottom="10dp"
                         android:layout_height="wrap_content">
 
+                        <ImageView
+                            android:id="@+id/openMapView"
+                            android:layout_width="30dp"
+                            android:layout_marginStart="20dp"
+                            android:layout_centerVertical="true"
+                            android:src="@drawable/ic_action_map"
+                            android:layout_height="30dp" />
+
                         <Button
+                            android:id="@+id/locationContinueButton"
                             android:layout_width="wrap_content"
-                            android:text="@string/set_location"
+                            android:text="@string/Continue"
                             android:layout_alignParentEnd="true"
                             android:background="@null"
                             android:layout_marginEnd="20dp"
@@ -210,10 +228,12 @@
 
                 <!--Pickup time form-->
                 <LinearLayout
+                    android:id="@+id/pickUpTimeLinearLayout"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
                     android:visibility="gone"
+                    android:translationX="400dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/dialog_bg"
                     android:layout_height="wrap_content">
@@ -242,9 +262,18 @@
                         android:layout_marginBottom="10dp"
                         android:layout_height="wrap_content">
 
+                        <ImageView
+                            android:id="@+id/openCalendarView"
+                            android:layout_width="30dp"
+                            android:layout_centerVertical="true"
+                            android:layout_marginStart="20dp"
+                            android:src="@drawable/ic_action_date"
+                            android:layout_height="30dp" />
+
                         <Button
+                            android:id="@+id/calendarContinueBtn"
                             android:layout_width="wrap_content"
-                            android:text="@string/open_calendar"
+                            android:text="@string/Continue"
                             android:layout_alignParentEnd="true"
                             android:background="@null"
                             android:layout_marginEnd="20dp"
@@ -257,10 +286,12 @@
 
                 <!--Vehicle expected form-->
                 <LinearLayout
+                    android:id="@+id/vehicleExpectedLinearLayout"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
                     android:visibility="gone"
+                    android:translationX="400dp"
                     android:layout_marginRight="10dp"
                     android:background="@drawable/dialog_bg"
                     android:layout_height="wrap_content">
@@ -285,6 +316,7 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/vehicleDescriptionEditText"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -297,6 +329,7 @@
                         android:layout_height="wrap_content" />
 
                     <EditText
+                        android:id="@+id/vehicleNumberPlate"
                         android:layout_width="200dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
@@ -314,6 +347,7 @@
                         android:layout_height="wrap_content">
 
                         <Button
+                            android:id="@+id/vehicleContinueButton"
                             android:layout_width="wrap_content"
                             android:text="@string/Continue"
                             android:layout_alignParentEnd="true"
@@ -326,10 +360,12 @@
 
                 </LinearLayout>
 
-                <!--Connfirm all the details-->
+                <!--Confirm all the details-->
                 <LinearLayout
+                    android:id="@+id/confirmDetailsLinearLayout"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
+                    android:translationX="400dp"
                     android:visibility="gone"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
@@ -367,6 +403,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/confirmName"
                         android:layout_width="wrap_content"
                         android:text="@string/name"
                         android:layout_marginStart="20dp"
@@ -383,6 +420,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/confirmLocation"
                         android:layout_width="wrap_content"
                         android:text="@string/organisation_location"
                         android:layout_marginStart="20dp"
@@ -399,12 +437,13 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/confirmPickUpDate"
                         android:layout_width="wrap_content"
                         android:text="12 July, 2019."
                         android:layout_marginStart="20dp"
                         android:layout_height="wrap_content" />
 
-                    <!--Pick up date-->
+                    <!--Pick up vehicle-->
                     <TextView
                         android:layout_width="wrap_content"
                         android:text="@string/pick_up_vehicle"
@@ -415,6 +454,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/confirmVehicle"
                         android:layout_width="wrap_content"
                         android:text="A red Isuzu blah blah blah..."
                         android:layout_marginStart="20dp"
@@ -426,6 +466,7 @@
                         android:layout_height="wrap_content">
 
                         <Button
+                            android:id="@+id/sendRequestButton"
                             android:layout_width="wrap_content"
                             android:text="@string/send_request"
                             android:layout_alignParentEnd="true"
@@ -440,11 +481,13 @@
 
                 <!--Finished up part-->
                 <LinearLayout
+                    android:id="@+id/finishedUpLinearLayout"
                     android:layout_width="match_parent"
                     android:orientation="vertical"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:visibility="gone"
+                    android:translationX="400dp"
                     android:background="@drawable/dialog_bg"
                     android:layout_height="wrap_content">
 
@@ -473,6 +516,7 @@
                         android:layout_height="wrap_content">
 
                         <Button
+                            android:id="@+id/finishedUpPartFinishButton"
                             android:layout_width="wrap_content"
                             android:text="@string/finish"
                             android:layout_alignParentEnd="true"
@@ -488,6 +532,85 @@
             </RelativeLayout>
 
         </LinearLayout>
+
+        <!--contains the map-->
+        <RelativeLayout
+            android:id="@+id/mapRelativeLayout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <android.support.v7.widget.CardView
+                android:id="@+id/mapContainer"
+                android:layout_width="match_parent"
+                android:alpha="0"
+                app:cardCornerRadius="14dp"
+                android:translationY="100dp"
+                android:layout_margin="10dp"
+                android:scaleX="0.9"
+                android:scaleY="0.9"
+                android:layout_height="match_parent">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <android.support.v7.widget.CardView
+                        android:layout_width="match_parent"
+                        android:background="@android:color/white"
+                        android:layout_margin="10dp"
+                        app:cardCornerRadius="14dp"
+                        app:cardPreventCornerOverlap="false"
+                        android:layout_height="wrap_content">
+
+                        <fragment
+                            android:id="@+id/place_autocomplete_fragment"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:name="com.google.android.gms.location.places.ui.PlaceAutocompleteFragment" />
+
+                    </android.support.v7.widget.CardView>
+
+                    <fragment
+                        class="com.google.android.gms.maps.MapFragment"
+                        android:id="@+id/map"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                    <Button
+                        android:id="@+id/setLocationButton"
+                        android:layout_width="wrap_content"
+                        android:text="@string/set"
+                        android:textColor="@color/titlecolor"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:layout_margin="20dp"
+                        android:background="@drawable/dialog_bg_stroke"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+
+            </android.support.v7.widget.CardView>
+
+
+        </RelativeLayout>
+
+        <!--Contains the progressbar item that shows while loading-->
+        <RelativeLayout
+            android:id="@+id/progressBarRelativeLayout"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBarNewDonation"
+                style="?android:attr/progressBarStyle"
+                android:layout_centerInParent="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 

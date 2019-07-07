@@ -115,6 +115,7 @@
 
             <!--My uploaded donations button-->
             <LinearLayout
+                android:id="@+id/myDonationsLinearLayout"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginRight="10dp"
@@ -138,6 +139,7 @@
 
             <!--New donation button-->
             <LinearLayout
+                android:id="@+id/newDonationLinearLayout"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginRight="10dp"
@@ -161,6 +163,7 @@
 
             <!--share App button-->
             <LinearLayout
+                android:id="@+id/shareAppLinearLayout"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginRight="10dp"
@@ -184,6 +187,7 @@
 
             <!--My Requests Button-->
             <LinearLayout
+                android:id="@+id/myRequestsLinearLayout"
                 android:layout_width="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginRight="10dp"
@@ -272,9 +276,9 @@
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:layout_marginBottom="10dp"
-            android:translationX="00dp"
-            android:alpha="1"
-            android:visibility="visible"
+            android:translationX="200dp"
+            android:alpha="0"
+            android:visibility="gone"
             android:scaleX="0.8"
             android:scaleY="0.8"
             android:layout_height="match_parent">

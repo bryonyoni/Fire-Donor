@@ -16,4 +16,6 @@ public class Constants {
 
     public static final String VIEW_DONATION_INTENT_FILTER = "VIEW_DONATION_INTENT_FILTER";
     public static final String REQUEST_DONATION_INTENT_FILTER = "REQUEST_DONATION_INTENT_FILTER";
+
+    public static final String UPLOADED_DONATION_REQUESTS = "DonationRequests";
 }

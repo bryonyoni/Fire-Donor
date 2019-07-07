@@ -99,5 +99,14 @@
     <string name="donation_listed_on">Donation listed on</string>
     <string name="just_near">Just near</string>
     <string name="close">Close.</string>
+    <string name="you_need_to_set_a_name">You need to set a name</string>
+    <string name="please_set_a_location_by_clicking_the_map_icon">Please set a location by clicking the map icon</string>
+    <string name="please_set_a_date_by_clicking_the_date_icon">Please set a date for pickup.</string>
+    <string name="a_description_is_needed">A description is needed.</string>
+    <string name="a_number_plate_is_needed">a number plate is needed.</string>
+    <string name="shareText">"Share The App."</string>
+    <string name="shareText2">"Hey, check out this interesting app called FireDonor."</string>
+
+
 
 </resources>

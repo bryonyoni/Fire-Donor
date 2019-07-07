@@ -12,6 +12,7 @@ import android.graphics.BitmapFactory;
 import android.location.Location;
 import android.location.LocationManager;
 import android.os.AsyncTask;
+import android.os.Vibrator;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
@@ -20,13 +21,10 @@ import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Base64;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -35,26 +33,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bry.firedonor.Adapters.ListedDonationItemAdapter;
-import com.bry.firedonor.Adapters.SelectedImageAdapter;
 import com.bry.firedonor.Constants;
 import com.bry.firedonor.Models.DonationImage;
 import com.bry.firedonor.Models.DonationItem;
-import com.bry.firedonor.Models.SetLocation;
 import com.bry.firedonor.R;
 import com.bry.firedonor.Services.Utils;
-import com.bry.firedonor.UserAccountActivity;
 import com.bry.firedonor.Variables;
-import com.google.android.gms.common.api.GoogleApiClient;
-import com.google.android.gms.common.api.Status;
-import com.google.android.gms.location.places.Place;
-import com.google.android.gms.location.places.ui.PlaceAutocompleteFragment;
-import com.google.android.gms.location.places.ui.PlaceSelectionListener;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DataSnapshot;
@@ -63,7 +51,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -81,6 +68,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     @Bind(R.id.openFeedbackButton) ImageButton openFeedbackButton;
     @Bind(R.id.userAccountButton) ImageButton userAccountButton;
+
+    @Bind(R.id.myDonationsLinearLayout) LinearLayout myDonationsLinearLayout;
+    @Bind(R.id.newDonationLinearLayout) LinearLayout newDonationLinearLayout;
+    @Bind(R.id.shareAppLinearLayout) LinearLayout shareAppLinearLayout;
+    @Bind(R.id.myRequestsLinearLayout) LinearLayout myRequestsLinearLayout;
 
     @Bind(R.id.listedItemsRecyclerView) RecyclerView listedItemsRecyclerView;
     List<DonationItem> loadedDonationItems = new ArrayList<>();
@@ -138,6 +130,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         LocalBroadcastManager.getInstance(mContext).registerReceiver(mMessageReceiverForViewDonation,new IntentFilter(Constants.VIEW_DONATION_INTENT_FILTER));
         LocalBroadcastManager.getInstance(mContext).registerReceiver(mMessageReceiverForRequestButton,new IntentFilter(Constants.REQUEST_DONATION_INTENT_FILTER));
+
+        openFeedbackButton.setOnClickListener(this);
+        userAccountButton.setOnClickListener(this);
+        myDonationsLinearLayout.setOnClickListener(this);
+        newDonationLinearLayout.setOnClickListener(this);
+        shareAppLinearLayout.setOnClickListener(this);
+        myRequestsLinearLayout.setOnClickListener(this);
     }
 
     private void loadDonationItems() {
@@ -375,8 +374,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if(v.equals(openFeedbackButton)){
             openFeedBackForm();
-        }else if(v.equals(userAccountButton)){
+        } else if(v.equals(userAccountButton)){
             Intent intent = new Intent(MainActivity.this, UserAccountActivity.class);
+            startActivity(intent);
+        } else if(v.equals(myDonationsLinearLayout)){
+            Intent intent = new Intent(MainActivity.this, MyDonationsActivity.class);
+            startActivity(intent);
+        } else if(v.equals(newDonationLinearLayout)){
+            Intent intent = new Intent(MainActivity.this, NewDonationActivity.class);
+            startActivity(intent);
+        } else if(v.equals(shareAppLinearLayout)){
+            Vibrator s = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            s.vibrate(50);
+            Intent sendIntent = new Intent();
+            sendIntent.setAction(Intent.ACTION_SEND);
+            sendIntent.putExtra(Intent.EXTRA_TEXT, getResources().getText(R.string.shareText2));
+            sendIntent.setType("text/plain");
+            startActivity(Intent.createChooser(sendIntent, getResources().getText(R.string.shareText)));
+        } else if(v.equals(myRequestsLinearLayout)){
+            Intent intent = new Intent(MainActivity.this, MyListedRequestsActivity.class);
             startActivity(intent);
         }
     }
