@@ -141,4 +141,18 @@ public class DatabaseManager {
         return this;
     }
 
+    public DatabaseManager setAcceptedRequest(RequestItem item, DonationItem itemDonated){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference donationRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEMS);
+
+        DatabaseReference donationInUserAccount = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_USERS).child(uid)
+                .child(Constants.UPLOADED_DONATION_ITEMS).child(itemDonated.getItemId());
+        donationInUserAccount.child("acceptedRequestItem").setValue(item);
+
+        donationRef.child(itemDonated.getItemId()).child("acceptedRequestItem").setValue(item);
+
+
+        return this;
+    }
+
 }

@@ -28,6 +28,7 @@
                 android:layout_height="wrap_content">
 
                 <ImageView
+                    android:id="@+id/backButton"
                     android:layout_width="40dp"
                     android:layout_gravity="center_vertical"
                     android:src="@drawable/ic_action_activity_back"
@@ -60,6 +61,7 @@
                     app:cardCornerRadius="14dp">
 
                     <ImageView
+                        android:id="@+id/mainImage"
                         android:layout_width="match_parent"
                         android:scaleType="fitXY"
                         android:layout_height="match_parent" />
@@ -73,6 +75,7 @@
                     android:layout_height="wrap_content">
 
                     <TextView
+                        android:id="@+id/itemNameAndMass"
                         android:layout_width="wrap_content"
                         android:text="@string/items_name_and_mass"
                         android:textSize="15sp"
@@ -80,6 +83,7 @@
                         android:layout_height="wrap_content" />
 
                     <TextView
+                        android:id="@+id/itemListingDate"
                         android:layout_width="wrap_content"
                         android:text="Listed on blah blah"
                         android:textSize="13sp"
@@ -121,6 +125,7 @@
             </LinearLayout>
 
             <android.support.v4.view.ViewPager
+                android:id="@+id/receivedRequestsViewPager"
                 android:layout_width="match_parent"
                 android:layout_marginTop="20dp"
                 android:layout_height="wrap_content">

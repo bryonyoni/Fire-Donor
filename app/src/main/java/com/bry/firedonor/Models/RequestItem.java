@@ -9,6 +9,7 @@ public class RequestItem {
     private MyTime pickUpDate;
     private String vehicleDescription;
     private String vehicleNumberPlate;
+    private DonationItem donationItem;
 
     public RequestItem(){}
 
@@ -83,5 +84,13 @@ public class RequestItem {
 
     public void setRequesterUid(String requesterUid) {
         this.requesterUid = requesterUid;
+    }
+
+    public DonationItem getDonationItem() {
+        return donationItem;
+    }
+
+    public void setDonationItem(DonationItem donationItem) {
+        this.donationItem = donationItem;
     }
 }

@@ -23,8 +23,9 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/namePart"
             android:layout_width="wrap_content"
-            android:text="Near Nairobi CBD."
+            android:text="Name."
             android:layout_marginRight="10dp"
             android:layout_marginLeft="10dp"
             android:textSize="14sp"
@@ -41,6 +42,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/location"
             android:layout_width="wrap_content"
             android:text="Nairobi."
             android:layout_marginRight="10dp"
@@ -59,6 +61,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/officialDate"
             android:layout_width="wrap_content"
             android:text="12 August, 2019."
             android:layout_marginRight="10dp"
@@ -77,6 +80,7 @@
             android:layout_height="wrap_content" />
 
         <TextView
+            android:id="@+id/pickupVehicle"
             android:layout_width="wrap_content"
             android:text="A red pick up Isuzu truck, KBR 035B."
             android:layout_marginRight="10dp"
@@ -89,7 +93,17 @@
             android:layout_marginTop="10dp"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/acceptedButton"
+                android:visibility="invisible"
+                android:layout_width="wrap_content"
+                android:layout_centerVertical="true"
+                android:text="@string/accepted"
+                android:layout_marginLeft="10dp"
+                android:layout_height="wrap_content" />
+
             <Button
+                android:id="@+id/acceptButton"
                 android:layout_width="wrap_content"
                 android:text="@string/accept"
                 android:background="null"

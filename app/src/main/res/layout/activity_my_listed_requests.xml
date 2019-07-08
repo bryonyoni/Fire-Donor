@@ -12,6 +12,7 @@
         android:layout_height="match_parent">
 
         <LinearLayout
+            android:id="@+id/everythingRelativeLayout"
             android:layout_width="match_parent"
             android:orientation="vertical"
             android:layout_height="wrap_content">
@@ -30,6 +31,7 @@
                     android:layout_height="wrap_content">
 
                     <ImageView
+                        android:id="@+id/backButton"
                         android:layout_width="40dp"
                         android:layout_gravity="center_vertical"
                         android:src="@drawable/ic_action_activity_back"
@@ -56,6 +58,7 @@
             </LinearLayout>
 
             <android.support.v4.view.ViewPager
+                android:id="@+id/myRequestsViewPager"
                 android:layout_width="match_parent"
                 android:layout_margin="10dp"
                 android:layout_height="wrap_content">
@@ -64,6 +67,21 @@
             </android.support.v4.view.ViewPager>
 
         </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/progressbarRelativeLayout"
+            android:layout_width="match_parent"
+            android:visibility="gone"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBarSignUp"
+                style="?android:attr/progressBarStyle"
+                android:layout_centerInParent="true"
+                android:layout_width="60dp"
+                android:layout_height="60dp"/>
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
