@@ -45,6 +45,7 @@
             </LinearLayout>
 
             <android.support.v7.widget.RecyclerView
+                android:id="@+id/myDonationsRecyclerView"
                 android:layout_width="match_parent"
                 android:paddingTop="10dp"
                 android:layout_margin="10dp"
@@ -54,6 +55,7 @@
 
         <!--Contains the edit donation part-->
         <RelativeLayout
+            android:id="@+id/editDonationRelativeLayout"
             android:layout_width="match_parent"
             android:background="@drawable/dialog_bg"
             android:layout_margin="10dp"
@@ -82,6 +84,7 @@
                         android:layout_height="wrap_content">
 
                         <ImageView
+                            android:id="@+id/editBackButton"
                             android:layout_width="40dp"
                             android:layout_gravity="center_vertical"
                             android:translationX="-10dp"
@@ -99,6 +102,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/deleteTextButton"
                         android:layout_width="wrap_content"
                         android:text="@string/delete"
                         android:textSize="17sp"
@@ -127,12 +131,14 @@
                         android:layout_height="wrap_content">
 
                         <ImageButton
+                            android:id="@+id/addPhotoImageButton"
                             android:layout_width="30dp"
                             android:src="@drawable/ic_action_add_photo"
                             android:background="@android:color/darker_gray"
                             android:layout_height="30dp" />
 
                         <ImageButton
+                            android:id="@+id/takePhotoButton"
                             android:layout_width="30dp"
                             android:layout_marginTop="10dp"
                             android:src="@drawable/ic_action_take_photo"
@@ -147,16 +153,33 @@
                         android:orientation="horizontal"
                         android:layout_height="wrap_content">
 
+                        <!--Small image 4, but actually its 0-->
+                        <android.support.v7.widget.CardView
+                            android:layout_width="70dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginStart="10dp"
+                            app:cardBackgroundColor="@color/colorPrimary"
+                            android:layout_height="70dp"
+                            app:cardCornerRadius="14dp">
+
+                            <ImageView
+                                android:id="@+id/image4"
+                                android:layout_width="match_parent"
+                                android:scaleType="fitXY"
+                                android:layout_height="match_parent" />
+
+                        </android.support.v7.widget.CardView>
+
                         <!--Small image 1-->
                         <android.support.v7.widget.CardView
                             android:layout_width="70dp"
-                            android:layout_marginLeft="10dp"
                             android:layout_marginEnd="10dp"
                             app:cardBackgroundColor="@color/colorPrimary"
                             android:layout_height="70dp"
                             app:cardCornerRadius="14dp">
 
                             <ImageView
+                                android:id="@+id/image1"
                                 android:layout_width="match_parent"
                                 android:scaleType="fitXY"
                                 android:layout_height="match_parent" />
@@ -172,6 +195,7 @@
                             app:cardCornerRadius="14dp">
 
                             <ImageView
+                                android:id="@+id/image2"
                                 android:layout_width="match_parent"
                                 android:scaleType="fitXY"
                                 android:layout_height="match_parent" />
@@ -187,26 +211,13 @@
                             app:cardCornerRadius="14dp">
 
                             <ImageView
+                                android:id="@+id/image3"
                                 android:layout_width="match_parent"
                                 android:scaleType="fitXY"
                                 android:layout_height="match_parent" />
 
                         </android.support.v7.widget.CardView>
 
-                        <!--Small image 4-->
-                        <android.support.v7.widget.CardView
-                            android:layout_width="70dp"
-                            android:layout_marginEnd="10dp"
-                            app:cardBackgroundColor="@color/colorPrimary"
-                            android:layout_height="70dp"
-                            app:cardCornerRadius="14dp">
-
-                            <ImageView
-                                android:layout_width="match_parent"
-                                android:scaleType="fitXY"
-                                android:layout_height="match_parent" />
-
-                        </android.support.v7.widget.CardView>
 
                     </LinearLayout>
 
@@ -233,6 +244,7 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
+                            android:id="@+id/itemTitleTextView"
                             android:layout_width="250dp"
                             android:textSize="13sp"
                             android:text="@string/items_name_and_mass"
@@ -241,6 +253,7 @@
                     </LinearLayout>
 
                     <ImageView
+                        android:id="@+id/editName"
                         android:layout_width="30dp"
                         android:src="@drawable/ic_action_edit"
                         android:layout_centerVertical="true"
@@ -270,6 +283,7 @@
                             android:layout_height="wrap_content" />
 
                         <TextView
+                            android:id="@+id/editDetails"
                             android:layout_width="250dp"
                             android:textSize="13sp"
                             android:text="@string/donation_details_blah_blah_blah"
@@ -315,6 +329,7 @@
                     </LinearLayout>
 
                     <ImageView
+                        android:visibility="gone"
                         android:layout_width="30dp"
                         android:src="@drawable/ic_action_edit"
                         android:layout_centerVertical="true"
@@ -340,6 +355,103 @@
                 android:layout_centerInParent="true"
                 android:layout_width="60dp"
                 android:layout_height="60dp"/>
+
+        </RelativeLayout>
+
+        <!--black background-->
+        <RelativeLayout
+            android:id="@+id/blackBack"
+            android:layout_width="match_parent"
+            android:background="@android:color/black"
+            android:visibility="gone"
+            android:alpha="0"
+            android:layout_height="match_parent"/>
+
+        <RelativeLayout
+            android:id="@+id/editDetailsRelativeLayout"
+            android:translationY="-200dp"
+            android:alpha="0"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:background="@drawable/dialog_bg"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_margin="10dp"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:textSize="20sp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_gravity="center_vertical"
+                    android:text="@string/edit_my_donation"
+                    android:textColor="@color/titlecolor"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="@string/new_item_name_and_weight"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/nameAndMassEditText"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="textAutoComplete"
+                    android:background="@android:color/white"
+                    android:textColorHint="@color/hintcolor"
+                    android:hint="@string/_25_kilos_of_something"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:text="The new item details."
+                    android:layout_marginTop="20dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_height="wrap_content" />
+
+                <EditText
+                    android:id="@+id/itemDetailsEditText"
+                    android:layout_width="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:inputType="textMultiLine"
+                    android:lines="4"
+                    android:gravity="top"
+                    android:background="@android:color/white"
+                    android:textColorHint="@color/hintcolor"
+                    android:hint="@string/details_come_here"
+                    android:padding="10dp"
+                    android:layout_height="wrap_content" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="20dp"
+                    android:layout_height="wrap_content">
+
+                    <Button
+                        android:id="@+id/finishedEditingButton"
+                        android:layout_width="wrap_content"
+                        android:text="@string/done"
+                        android:layout_alignParentEnd="true"
+                        android:background="@null"
+                        android:layout_marginEnd="20dp"
+                        android:textColor="@color/titlecolor"
+                        android:layout_height="wrap_content" />
+
+                </RelativeLayout>
+
+            </LinearLayout>
 
         </RelativeLayout>
 

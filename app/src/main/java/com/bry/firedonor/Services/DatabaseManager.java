@@ -54,6 +54,10 @@ public class DatabaseManager {
         item.setItemId(pushRef);
         donationRef.setValue(item);
 
+        DatabaseReference donationInUserAccount = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_USERS).child(uid)
+                .child(Constants.UPLOADED_DONATION_ITEMS).child(pushRef);
+        donationInUserAccount.setValue(item);
+
         iterator = 0;
         final int imageNumber = images.size();
         for(DonationImage image:images){
@@ -89,6 +93,50 @@ public class DatabaseManager {
                 LocalBroadcastManager.getInstance(mContext).sendBroadcast(new Intent(BROADCAST_RECEIVER));
             }
         });
+
+        return this;
+    }
+
+    public DatabaseManager updateNameDataInFirebase(DonationItem item ,String newName){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference donationRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEMS).child(item.getItemId());
+        donationRef.child("itemName").setValue(newName);
+
+        DatabaseReference donationInUserAccount = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_USERS).child(uid)
+                .child(Constants.UPLOADED_DONATION_ITEMS).child(item.getItemId());
+        donationInUserAccount.child("itemName").setValue(newName);
+
+        return this;
+    }
+
+    public DatabaseManager updateDetailsDataInFirebase(DonationItem item ,String newDetails){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        DatabaseReference donationRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEMS).child(item.getItemId());
+        donationRef.child("itemDetails").setValue(newDetails);
+
+        DatabaseReference donationInUserAccount = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_USERS).child(uid)
+                .child(Constants.UPLOADED_DONATION_ITEMS).child(item.getItemId());
+        donationInUserAccount.child("itemDetails").setValue(newDetails);
+
+        return this;
+    }
+
+    public DatabaseManager updateImageDataInFirebase(DonationItem item, DonationImage dm){
+        DatabaseReference imageRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEM_IMAGES);
+        imageRef.child(item.getItemId()).child(dm.getImageId()).setValue(dm);
+
+        return this;
+    }
+
+    public DatabaseManager deleteDonationItem(DonationItem item){
+        String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        DatabaseReference donationRef = FirebaseDatabase.getInstance().getReference(Constants.UPLOADED_DONATION_ITEMS);
+        DatabaseReference donationInUserAccount = FirebaseDatabase.getInstance().getReference(Constants.FIREBASE_USERS).child(uid)
+                .child(Constants.UPLOADED_DONATION_ITEMS).child(item.getItemId());
+
+        donationRef.removeValue();
+        donationInUserAccount.removeValue();
 
         return this;
     }

@@ -17,6 +17,7 @@ public class DonationItem {
     private Integer numberOfReports = 0;
     private RequestItem acceptedRequestItem;
     private String uploaderName;
+    private List<RequestItem> donationRequests = new ArrayList<>();
 
     public DonationItem(){}
 
@@ -143,5 +144,13 @@ public class DonationItem {
 
     public void setUploaderName(String uploaderName) {
         this.uploaderName = uploaderName;
+    }
+
+    public List<RequestItem> getDonationRequests() {
+        return donationRequests;
+    }
+
+    public void setDonationRequests(List<RequestItem> donationRequests) {
+        this.donationRequests = donationRequests;
     }
 }

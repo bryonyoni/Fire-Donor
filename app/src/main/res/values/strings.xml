@@ -106,7 +106,8 @@
     <string name="a_number_plate_is_needed">a number plate is needed.</string>
     <string name="shareText">"Share The App."</string>
     <string name="shareText2">"Hey, check out this interesting app called FireDonor."</string>
-
+    <string name="new_item_name_and_weight">New item name and weight.</string>
+    <string name="done">Done.</string>
 
 
 </resources>
