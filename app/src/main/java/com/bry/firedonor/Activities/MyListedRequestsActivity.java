@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.util.Base64;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bry.firedonor.Constants;
@@ -41,7 +42,7 @@ public class MyListedRequestsActivity extends AppCompatActivity {
     private Context mContext;
     @Bind(R.id.backButton) ImageView backButton;
     @Bind(R.id.progressbarRelativeLayout) RelativeLayout progressbarRelativeLayout;
-    @Bind(R.id.everythingRelativeLayout) RelativeLayout everythingRelativeLayout;
+    @Bind(R.id.everythingRelativeLayout) LinearLayout everythingRelativeLayout;
     private boolean isShowingLoadingScreens = false;
     private List<RequestItem> loadedRequestedDonations = new ArrayList<>();
     @Bind(R.id.myRequestsViewPager) ViewPager myRequestsViewPager;

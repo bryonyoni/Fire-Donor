@@ -2,6 +2,7 @@ package com.bry.firedonor.Activities;
 
 import android.Manifest;
 import android.animation.Animator;
+import android.app.FragmentManager;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -34,6 +35,7 @@ import android.widget.Toast;
 
 import com.bry.firedonor.Adapters.ListedDonationItemAdapter;
 import com.bry.firedonor.Constants;
+import com.bry.firedonor.Fragments.FeedbackFragment;
 import com.bry.firedonor.Models.DonationImage;
 import com.bry.firedonor.Models.DonationItem;
 import com.bry.firedonor.R;
@@ -398,7 +400,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void openFeedBackForm() {
-
+        FragmentManager fm = getFragmentManager();
+        FeedbackFragment reportDialogFragment = new FeedbackFragment();
+        reportDialogFragment.setMenuVisibility(false);
+        reportDialogFragment.show(fm, "Feedback.");
+        reportDialogFragment.setfragContext(mContext);
     }
 
     private void showLoadingScreens(){

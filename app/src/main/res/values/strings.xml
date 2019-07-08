@@ -111,4 +111,11 @@
     <string name="accepted">Accepted.</string>
 
 
+    <string name="feedbacktype">Feedback Type</string>
+    <string name="feedbacktype1">Suggestion</string>
+    <string name="feedbacktype2">Gripe</string>
+    <string name="feedbacktype3">Praise</string>
+    <string name="feedbacktype4">Bug</string>
+    <string name="feedbacktype5">Question</string>
+
 </resources>
